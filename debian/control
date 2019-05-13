@@ -1,0 +1,9 @@
+Source: acme.sh
+Maintainer: Maarten den Braber <m@mdbraber.com> 
+Build-Depends: debhelper (>= 9), lsb-release, wget, dpkg-dev
+
+Package: acme.sh
+Architecture: any
+Description: A pure Unix shell script implementing ACME client protocol
+Priority: optional
+Section: web

@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+VERSION := $(shell dpkg-parsechangelog -S version)
+
+DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
+PACKAGEVERSION  := $(VERSION)
+#BINARY          := acme.sh # Expect compiled binary in our local directory.
+GITHUBUSER      := mdbraber
+PROJECT		:= acme.sh
+BRANCH		:= update-acmeproxy
+
+
+%:
+	dh_clean
+	dh $@
+
+override_dh_strip:
+	# don't perform dh_strip
+	echo dh_strip
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	mkdir -p debian/tmp debian/acme.sh/usr/bin debian/acme.sh/etc/acme.sh debian/acme.sh/etc/ssl/acme.sh debian/acme.sh/usr/lib/acme.sh/ debian/acme.sh/var/log/acme.sh
+	wget -P debian/tmp http://github.com/$(GITHUBUSER)/$(PROJECT)/archive/$(BRANCH).tar.gz
+	tar xzvf debian/tmp/$(BRANCH).tar.gz -C debian/tmp
+	cp -Rf debian/tmp/$(PROJECT)-$(BRANCH)/acme.sh debian/acme.sh/usr/lib/acme.sh/
+	cp -Rf debian/tmp/$(PROJECT)-$(BRANCH)/deploy/ debian/acme.sh/usr/lib/acme.sh/ 
+	cp -Rf debian/tmp/$(PROJECT)-$(BRANCH)/dnsapi/ debian/acme.sh/usr/lib/acme.sh/ 
+	cp -Rf debian/tmp/$(PROJECT)-$(BRANCH)/notify/ debian/acme.sh/usr/lib/acme.sh/
+	cp account-lib.conf debian/acme.sh/usr/lib/acme.sh/account.conf
+	cp account-etc.conf debian/acme.sh/etc/acme.sh/account.conf
+	cp acme.sh.env debian/acme.sh/etc/acme.sh/
+	ln -s ../lib/acme.sh/acme.sh debian/acme.sh/usr/bin/acme.sh
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)

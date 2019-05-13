@@ -1,0 +1,11 @@
+acme.sh (0.1-2) stable; urgency=medium
+
+  * Fixed global install 
+
+ -- Maarten den Braber <m@mdbraber.com>  Sat, 11 May 2019 22:54:56 +0200
+
+acme.sh (0.1-1) stable; urgency=medium
+
+  * Initial release
+
+ -- Maarten den Braber <m@mdbraber.com>  Fri, 10 May 2019 19:15:10 +0200
