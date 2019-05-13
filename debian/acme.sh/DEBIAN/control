@@ -1,8 +1,0 @@
-Package: acme.sh
-Version: 0.1-2
-Architecture: amd64
-Maintainer: Maarten den Braber <m@mdbraber.com>
-Installed-Size: 711
-Section: web
-Priority: optional
-Description: A pure Unix shell script implementing ACME client protocol
