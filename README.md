@@ -1,6 +1,6 @@
 # acme.sh-debian
 
-This projects helps to package [acme.sh](https://github.com/neilpang/acme.sh) as a Debian archive (.deb). acme.sh actually has a pretty go installer (`acme.sh --install`) but if you want to use a (personal) APT repository (e.g. with using [unattended-upgrades](https://packages.debian.org/stretch/unattended-upgrades)) this could help make it easier to install. Also this could be used to create a package that already holds your personal configuration files. 
+This projects helps to package [acme.sh](https://github.com/neilpang/acme.sh) as a Debian archive (.deb). acme.sh actually has a pretty good installer (`acme.sh --install`) but if you want to use a (personal) APT repository (e.g. with using [unattended-upgrades](https://packages.debian.org/stretch/unattended-upgrades)) this could help make it easier to install. Also this could be used to create a package that already holds your personal configuration files. 
 
 The resulting package will do the following:
 
